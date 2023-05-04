@@ -29,7 +29,8 @@ router.get('/:id', async (req, res) => {
       include: [{model: Category}, {model: Tag, through: ProductTag}]
     });
     if (!ProductData) {
-      res.status(404).json({message: 'No category found with matching id! try again :)' });
+      res.status(404)
+      .json({message: 'No category found with matching id! try again :)' });
       return;
     }
     res.status(200).json(ProductData);
@@ -122,9 +123,13 @@ router.delete('/:id', async (req, res) => {
         where: {
           id: req.params.id
         }
-      }
-    );
-    res.status(200).json({message:"A Product has been deleted."});
+      });
+    if (!productData) { 
+      res.status(400).json({message: })
+    res.status(200).json({message:"A product with this id was not found."});
+    return;
+    }
+    res.status(200).json({message: "The product has been deleted"});
   } catch (err) {
     res.status(500).json(err);
   }
