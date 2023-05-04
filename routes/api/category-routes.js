@@ -41,10 +41,7 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
-   
-    //     category_name: req.body.category_name,
     
-
 // update a category by its `id` value
 router.put('/:id', async (req, res) => {
   try {
@@ -54,7 +51,7 @@ router.put('/:id', async (req, res) => {
       },
     
     })
-    res.status(200).json({ message: "The category has been updated."});
+    res.status(200).json({ message: ""});
   } catch (err) {
     res.status(400).json(err);
   }
